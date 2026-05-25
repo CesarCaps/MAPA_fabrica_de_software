@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Controle de Livros</title>
+	<link rel = "icon" href = "imagens/library.png"> <!-- > ícone que fica na aba com o título -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Gerenciador de Biblioteca</h1>
+    </header>
+
+    <main class="container">
+
+        <!-- SEÇÃO 1: CADASTRO -->
+        <section class="card">
+            <h2>Cadastrar Novo Livro</h2>
+            
+            <form action="cadastrarLivro" method="POST"> <!-- O action vai apontar para o Servlet -->
+            
+            <!-- Formulários para preenchimento de dados -->
+                <div class="form-group">
+                    <label for="titulo">Título do Livro:</label>
+                    <input type="text" id="titulo" name="titulo" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="autor">Autor:</label>
+                    <input type="text" id="autor" name="autor" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="anoPublicacao">Ano de Publicação:</label>
+                    <input type="number" id="anoPublicacao" name="anoPublicacao" min="0" max="2026" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="isbn">ISBN:</label>
+                    <input type="text" id="isbn" name="isbn" 
+                    placeholder="Ex: 9783161484100 ou 978-3-16-148410-0" 
+           			pattern="(?:97[89][- ]?)?[0-9]{1,5}[- ]?[0-9]{1,7}[- ]?[0-9]{1,6}[- ]?[0-9]"
+           			title="Digite um formato de ISBN válido (10 ou 13 dígitos, com ou sem hífen)." required> <!-- Exemplo de como deve ser digitado o ISBN, e evita que seja salvo um formato errado -->
+                </div>
+					
+                <button type="submit" class="btn btn-success">Cadastrar Livro</button> <!-- Botão para concluir a operação -->
+            </form>
+        </section>
+
+        <!-- SEÇÃO 2: EXCLUSÃO -->
+        <section class="card">
+            <h2>Excluir Livro</h2>
+            <p>Insira o ISBN do livro que deseja remover do sistema.</p>
+            <form action="excluirLivro" method="POST">
+                <div class="form-group">
+                    <label for="excluirIsbn">ISBN do Livro:</label>
+                    <input type="text" id="excluirIsbn" name="isbn" 
+                    pattern="(?:97[89][- ]?)?[0-9]{1,5}[- ]?[0-9]{1,7}[- ]?[0-9]{1,6}[- ]?[0-9]"
+           			title="Digite um formato de ISBN válido." required> <!-- Exemplo de como deve ser digitado o ISBN -->
+                </div>
+                
+                <button type="submit" class="btn btn-danger">Excluir Livro</button> <!-- Botão para concluir a operação -->
+            </form>
+        </section>
+
+        <!-- SEÇÃO 3: REDIRECIONAMENTO PARA LISTAGEM -->
+<section class="card text-center">
+    <h2>Consultar Acervo</h2>
+    <p>Clique no botão abaixo para visualizar todos os livros cadastrados no sistema.</p>
+    <br>
+    <!-- Se for usar apenas HTML estático no teste: href="lista.html" -->
+    <!-- Se for integrar com Java Servlet: href="listarLivros" -->
+    <a href= "./ListarLivros" class="btn btn-info">Ver Livros Cadastrados</a> <!-- Botão para concluir a operação -->
+</section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 - Desenvolvido por Cesar Augusto</p>
+		<a href= https://github.com/CesarCaps> Github </a> <!-- Meu contato no gitHub -->
+    </footer>
+
+</body>
+</html>
